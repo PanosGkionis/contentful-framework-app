@@ -69,10 +69,6 @@ const Page = () => {
 			</WorkbenchSidebar>
 			<WorkbenchContent>
 				{blogPosts.map((blog: any) => {
-					const body = blog.fields.body['en-US'];
-					const words = body.split(/\s+/);
-					const wordCount = words.length;
-					const readTime = (wordCount / 200).toFixed(0);
 					const id = blog.fields.id['en-US'];
 					const author = blog.fields.author['en-US'];
 					const sysId = blog.sys.id;
@@ -83,15 +79,6 @@ const Page = () => {
 								<div>
 									<div className='font-bold'>{id}</div>
 									<div>{author}</div>
-									<div>
-										{`${body.substring(0, 50)}... Words: (${
-											body.length
-										}) Read time: ${
-											(readTime as unknown as number) < 1
-												? 'Less than a min'
-												: `${readTime} min`
-										}`}
-									</div>
 								</div>
 								<div className='flex flex-col gap-1 items-end justify-end'>
 									<Button
